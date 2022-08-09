@@ -2,6 +2,7 @@ package com.example2.testproject
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example2.testproject.model.dataImpl.Repository
 import com.example2.testproject.databinding.ActivityMainBinding
@@ -21,10 +22,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.textView.visibility = View.INVISIBLE
+        binding.webview.settings.javaScriptEnabled = true
+        binding.webview.webViewClient = WebViewClient()
         CoroutineScope(Dispatchers.IO).launch {
-            val result = Repository.getData()
 
+            val result = Repository.getData()
 
             val text = "${result?.log?.last()}"
             val pattern: Pattern = Pattern.compile("\\\"Country\\\":\\\"RU\\\"")
