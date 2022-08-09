@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.webview.settings.javaScriptEnabled = true
         binding.webview.webViewClient = WebViewClient()
-        settingsAPI("RU")
+        settingsAPI("UKR","RU")
 
     }
 
@@ -33,16 +33,26 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun settingsAPI(string:String){
+    private fun settingsAPI(vararg countries:String){
+        var isApiCountrie = false
+        var cansel = false
         CoroutineScope(Dispatchers.IO).launch {
 
             val result = Repository.getData()
 
-            val text = "${result?.log?.last()}"
-            val pattern: Pattern = Pattern.compile("\\\"Country\\\":\\\"$string\\\"")
-            val matcher: Matcher = pattern.matcher(text)
+            for(country in countries){
 
-            if(!matcher.find()){
+            val text = "${result?.log?.last()}"
+            val pattern: Pattern = Pattern.compile("\\\"Country\\\":\\\"$country\\\"")
+            val matcher: Matcher = pattern.matcher(text)
+                if(!cansel) {
+                    isApiCountrie = matcher.find()
+                    if(isApiCountrie){
+                        cansel = true
+                    }
+                }
+            }
+            if(isApiCountrie){
                 runOnUiThread {
                     binding.progressBar.visibility = View.INVISIBLE
                     binding.webview.loadUrl("https://www.google.com")
@@ -51,9 +61,10 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     binding.progressBar.visibility = View.INVISIBLE
                     binding.textView.visibility = View.VISIBLE
+
                 }
             }
-        }
-    }
+
+    }}
 
 }
