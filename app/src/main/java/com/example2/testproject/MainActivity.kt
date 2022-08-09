@@ -24,12 +24,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.webview.settings.javaScriptEnabled = true
         binding.webview.webViewClient = WebViewClient()
+        settingsAPI("RU")
+
+    }
+
+
+
+
+
+
+    private fun settingsAPI(string:String){
         CoroutineScope(Dispatchers.IO).launch {
 
             val result = Repository.getData()
 
             val text = "${result?.log?.last()}"
-            val pattern: Pattern = Pattern.compile("\\\"Country\\\":\\\"RU\\\"")
+            val pattern: Pattern = Pattern.compile("\\\"Country\\\":\\\"$string\\\"")
             val matcher: Matcher = pattern.matcher(text)
 
             if(!matcher.find()){
@@ -44,6 +54,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
+
 }
