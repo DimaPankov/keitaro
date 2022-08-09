@@ -1,4 +1,4 @@
-package com.example2.testProject.model.models
+package com.example2.testproject.model.models
 
 data class Uniqueness(
     val campaign: Boolean,

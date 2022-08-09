@@ -1,15 +1,16 @@
 package com.example2.testproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example2.testProject.model.dataImpl.Repository
+import androidx.appcompat.app.AppCompatActivity
+import com.example2.testproject.model.dataImpl.Repository
 import com.example2.testproject.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,6 +1,6 @@
-package com.example2.testProject.model
+package com.example2.testproject.model
 
-import com.example2.testProject.model.models.JsonData
+import com.example2.testproject.model.models.JsonData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

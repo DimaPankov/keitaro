@@ -1,7 +1,9 @@
-package com.example2.testProject.model.dataImpl
+package com.example2.testproject.model.dataImpl
 
-import com.example2.testProject.model.models.JsonData
-import com.example2.testProject.model.RetrofitApi.retrofitService
+import com.example2.testproject.model.RetrofitApi.retrofitService
+import com.example2.testproject.model.models.JsonData
+
+
 
 
 object Repository {

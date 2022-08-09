@@ -1,6 +1,5 @@
-package com.example2.testProject.model.models
+package com.example2.testproject.model.models
 
-import com.example2.testProject.models.Info
 
 data class JsonData(
     val body: String,
